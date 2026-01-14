@@ -32,3 +32,20 @@ ex:permission3 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
 <collection:alice/> a odrl:AssetCollection ;
   odrl:source <alice/> ;
   odrl_p:relation <http://www.w3.org/ns/ldp#contains> .
+
+
+ex:usagePolicy4 a odrl:Agreement .
+ex:usagePolicy4 odrl:permission ex:permission4 .
+ex:permission4 a odrl:Permission .
+ex:permission4 odrl:action odrl:write , odrl:read .
+ex:permission4 odrl:target <http://localhost:8080/alice/> , <http://localhost:8080/alice/s3/> , <http://localhost:8080/alice/s3/resource.txt> .
+ex:permission4 odrl:assignee <https://woslabbi.pod.knows.idlab.ugent.be/profile/card#me> .
+ex:permission4 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
+
+ex:usagePolicy5 a odrl:Agreement .
+ex:usagePolicy5 odrl:permission ex:permission5 .
+ex:permission5 a odrl:Permission .
+ex:permission5 odrl:action odrl:read .
+ex:permission5 odrl:target <http://localhost:8080/alice/query> .
+ex:permission5 odrl:assignee <https://woslabbi.pod.knows.idlab.ugent.be/profile/card#me> .
+ex:permission5 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
