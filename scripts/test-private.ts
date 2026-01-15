@@ -1,7 +1,6 @@
 #!/usr/bin/env -S npx tsx
 
-const privateResource =
-  "http://localhost:3000/alice/solid/private/resource.txt";
+const privateResource = "http://localhost:8080/alice/s3/private/resource.txt";
 
 function parseJwt(token: string) {
   return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
