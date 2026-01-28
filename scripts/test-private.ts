@@ -21,12 +21,6 @@ async function main() {
 
   const noTokenResponse = await fetch(privateResource, request);
 
-  const promises = [];
-  for (let i = 0; i < 100; i++) {
-    promises.push(fetch(privateResource, request));
-  }
-  await Promise.all(promises);
-
   const wwwAuthenticateHeader =
     noTokenResponse.headers.get("WWW-Authenticate")!;
 
