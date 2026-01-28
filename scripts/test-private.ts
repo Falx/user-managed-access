@@ -16,10 +16,16 @@ async function main() {
   console.log("\n\n");
 
   console.log(
-    `=== Trying to create private resource <${privateResource}> without access token.\n`
+    `=== Trying to create private resource <${privateResource}> without access token.\n`,
   );
 
   const noTokenResponse = await fetch(privateResource, request);
+
+  const promises = [];
+  for (let i = 0; i < 100; i++) {
+    promises.push(fetch(privateResource, request));
+  }
+  await Promise.all(promises);
 
   const wwwAuthenticateHeader =
     noTokenResponse.headers.get("WWW-Authenticate")!;
@@ -32,12 +38,13 @@ async function main() {
     wwwAuthenticateHeader
       .replace(/^UMA /, "")
       .split(", ")
-      .map((param) => param.split("=").map((s) => s.replace(/"/g, "")))
+      .map((param) => param.split("=").map((s) => s.replace(/"/g, ""))),
   );
 
   const tokenEndpoint = as_uri + "/token"; // should normally be retrieved from .well-known/uma2-configuration
 
   const claim_token =
+    // "http://localhost:8080/alice";
     "https://woslabbi.pod.knows.idlab.ugent.be/profile/card#me";
 
   const content = {
@@ -67,7 +74,11 @@ async function main() {
 
   // const decodedToken = parseJwt(asResponse.access_token);
 
-  console.log(`= Status: ${asRequestResponse.status}\n`);
+  console.log(
+    `= Status: ${asRequestResponse.status} ${asRequestResponse.statusText}\n`,
+  );
+  console.log(`= Body (raw):\n`);
+  console.log(asResponse);
   console.log(`= Body (decoded):\n`);
   console.log({
     ...asResponse,
@@ -80,7 +91,7 @@ async function main() {
   // }
 
   console.log(
-    `=== Trying to create private resource <${privateResource}> WITH access token.\n`
+    `=== Trying to create private resource <${privateResource}> WITH access token.\n`,
   );
 
   request.headers = {
