@@ -36,16 +36,18 @@ ex:permission3 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
 
 ex:usagePolicy4 a odrl:Agreement .
 ex:usagePolicy4 odrl:permission ex:permission4 .
+ex:usagePolicy4 odrl:uid ex:usagePolicy4 .
 ex:permission4 a odrl:Permission .
 ex:permission4 odrl:action odrl:write , odrl:read .
-ex:permission4 odrl:target <http://localhost:8080/alice/> , <http://localhost:8080/alice/s3/> , <http://localhost:8080/alice/s3/resource.txt> .
+ex:permission4 odrl:target <http://localhost:8080/alice/> , <http://localhost:8080/alice/s3/> , <http://localhost:8080/alice/s3/private/resource.txt> .
 ex:permission4 odrl:assignee <https://woslabbi.pod.knows.idlab.ugent.be/profile/card#me> .
-ex:permission4 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
+ex:permission4 odrl:assigner <http://localhost:8080/alice> .
 
 ex:usagePolicy5 a odrl:Agreement .
 ex:usagePolicy5 odrl:permission ex:permission5 .
+ex:usagePolicy5 odrl:uid ex:usagePolicy5 .
 ex:permission5 a odrl:Permission .
 ex:permission5 odrl:action odrl:read .
 ex:permission5 odrl:target <http://localhost:8080/alice/query> .
-ex:permission5 odrl:assignee <https://woslabbi.pod.knows.idlab.ugent.be/profile/card#me> .
+ex:permission5 odrl:assignee <http://localhost:3001/alice/profile/card#me> .
 ex:permission5 odrl:assigner <https://pod.woutslabbinck.com/profile/card#me> .
